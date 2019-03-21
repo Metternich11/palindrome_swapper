@@ -27,7 +27,23 @@
 // Alternatively send an email with your solution to natorgom@gmail.com
 
 function palindromeSwapper(str)  {
-  // your code here
+  str = str.split('');
+  for (let i = 1; i < str.length; i++) {
+    let bla = str.slice();
+    let tmp = bla[i];
+    bla[i] = bla[i-1];
+    bla[i-1] = tmp;
+    console.log(bla);
+    if (checkPalindrome(bla)) return bla.join('');
+  }
+  return -1;
 }
 
+function checkPalindrome (str) {
+
+  let str2 = str.slice();
+  str2.reverse();
+  if (str.join('') === str2.join('')) return true;
+  return false;
+}
 module.exports = palindromeSwapper;
